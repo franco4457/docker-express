@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "tsc && tsc-alias",
+    "start": "node ./build/src/index.js",
     "lint": "eslint --ext .jsx,.js,.ts,.tsx .",
     "dev": "nodemon --exec ts-node --esm ./src/index.ts"
   },

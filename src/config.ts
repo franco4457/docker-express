@@ -1,2 +1,3 @@
-import 'dotenv/config'
+import { config } from 'dotenv'
+config()
 export const { PORT: port = 3000, DB_MONGO_URL: dbUrl = '' } = process.env
