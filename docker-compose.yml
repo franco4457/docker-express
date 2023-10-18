@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - elpepe
+    environment:
+      - DB_MONGO_URL=mongodb://admin:secret@elpepe:27017/todo?authSource=admin
+  elpepe:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
