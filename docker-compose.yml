@@ -15,3 +15,10 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      # mongo stores data in /data/db
+      - mongo-data:/data/db
+      # postgres stores data in /var/lib/postgresql/data
+      # mysql stores data in /var/lib/mysql
+volumes:
+  mongo-data:
