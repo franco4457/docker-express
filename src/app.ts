@@ -25,7 +25,7 @@ app.get('/task', async (_req, res, next) => {
   try {
     await conn()
     const tasks = await Task.find()
-    res.json({ tasks })
+    res.json({ error: false, tasks })
   } catch (error) {
     next(error)
   }
@@ -38,7 +38,7 @@ app.get('/create', async (_req, res, next) => {
       description: 'Create a new task',
       title: 'Create task'
     })
-    res.status(201).json({ task })
+    res.status(201).json({ error: false, task })
   } catch (error) {
     next(error)
   }
@@ -46,7 +46,7 @@ app.get('/create', async (_req, res, next) => {
 
 app.use(((err, _req, res, _next) => {
   console.log(err)
-  res.status(500).json({ error: err.message })
+  res.status(500).json({ error: true, message: err.message })
 }) as ErrorRequestHandler)
 
 export default app
