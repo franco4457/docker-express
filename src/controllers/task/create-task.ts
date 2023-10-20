@@ -1,8 +1,8 @@
 import { conn } from '@/db/mongo'
 import { Task } from '@/models/task'
-import type { NextFunction, Request, Response } from 'express'
+import type { Handler } from 'express'
 
-export async function createTask(_req: Request, res: Response, next: NextFunction) {
+export const createTask: Handler = async (_req, res, next) => {
   try {
     await conn()
     const task = await Task.create({
